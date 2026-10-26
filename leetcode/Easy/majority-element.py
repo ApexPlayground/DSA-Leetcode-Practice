@@ -4,10 +4,14 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/majority-element/
-// Solved on: 2026-10-26T08:19:05.670Z
+// Solved on: 2026-10-26T08:24:13.161Z
 
 class Solution:
     def majorityElement(self, nums: list[int]) -> int:
+
+        '''Using voting algorithm, the idea is to choose the current candidate,
+            and either increase or reduce the count and updating to a new candidate
+            when count get to 0, at the end , we would have the most elements'''
 
         choice = 0
         count = 0
@@ -21,7 +25,5 @@ class Solution:
             else:
                 count -= 1
         return choice
-        
 
-
-        
+   
