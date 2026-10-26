@@ -4,43 +4,33 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/product-of-array-except-self/
-// Solved on: 2026-10-26T09:07:06.748Z
+// Solved on: 2026-10-26T09:17:40.500Z
 
 class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
+    '''the idea is to use a prefix and suffix product array, build up both array,
+    when we ar multiplying prefix * suffix at i, it dosnt include i so that is the product
+    of all values except i.'''
+    def productExceptSelf(self, nums: list[int]) -> list[int]:
+        n = len(nums)
 
+        # prefix product
+        prefix_prod = [1] * n
 
+        # suffix product
+        suffix_prod = [1] * n
+
+        for i in range(1, n):
+            prefix_prod[i] = prefix_prod[i - 1] * nums[i - 1]
+        
+        for i in range(n - 2, -1, -1):
+            suffix_prod[i] = suffix_prod[i + 1] * nums[i + 1]
+        
         res = []
-
-        # for i in range(len(nums)):
-        #     ans = 1
-        #     for j in range(len(nums)):
-        #         if i == j:
-        #             continue
-        #         ans *= nums[j]
-        #     res.append(ans)
-        # return res
-            
-
-        p_prod = [1] * len(nums)
-        s_prod = [1] * len(nums)
-
-        # prefix prod
-        for i in range(1, len(nums)):
-            p_prod[i] = p_prod[i - 1] * nums[i - 1] 
+        for val1, val2 in zip(prefix_prod, suffix_prod):
+            res.append(val1 * val2)
         
-        print(p_prod)
+      
+        return res
 
-        #suffix prod
-        for i in range(len(nums) - 2, -1, -1):
-            s_prod[i] = s_prod[i + 1] * nums[i + 1] 
-        
-        print(s_prod)
-
-        ans = []
-        for v1, v2 in zip(p_prod, s_prod):
-            ans.append(v1 * v2)
-        
-        return ans
-
+         
         
