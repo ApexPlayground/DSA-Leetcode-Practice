@@ -4,30 +4,35 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/3sum-closest/
-// Solved on: 2026-10-27T17:41:27.837Z
+// Solved on: 2026-10-27T17:47:22.572Z
 
 class Solution:
-    def threeSumClosest(self, nums: List[int], target: int) -> int:
+    def threeSumClosest(self, nums: list[int], target: int) -> int:
         nums.sort()
-        res = float('inf')
- 
 
-        for i in range(len(nums) - 2):
-            j = i + 1
-            k = len(nums) - 1
+        best = float('inf')
+        closest_sum = 0
 
-            while j < k:
-                curr = nums[i] + nums[j] + nums[k]
+      
+        for i in range(len(nums) - 2 ):
 
-                if abs(curr - target) <= abs(res - target):
-                    res = curr
+            l = i + 1
+            r = len(nums) - 1
 
-                if curr < target:
-                    j += 1
-                elif curr > target:
-                    k -= 1
+            while l < r:
+                total = nums[i] + nums[l] + nums[r]
+
+                closest = abs(target - total)
+
+                if closest < best:
+                    best = min(best, closest) 
+                    closest_sum = total
+
+                if total < target:
+                    l += 1
                 else:
-                    return curr
-        return res
+                    r -= 1
 
         
+        return closest_sum
+
