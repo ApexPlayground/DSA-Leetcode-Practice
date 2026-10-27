@@ -4,9 +4,17 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/backspace-string-compare/
-// Solved on: 2026-10-27T16:46:23.716Z
+// Solved on: 2026-10-27T16:53:50.581Z
 
 class Solution:
+
+    '''I processed each back space until im at a valid char for both strings,
+    by the time the processing is done, both pointers will be at same place and we can compare
+    if not equal we return fals, also if one pointer and at 0 befor the other we return false.
+
+    stack also works, we pop for the stack when we encounter # if there is value in the stack 
+    if no values just continue to next iteration, then compare both stacksa at the end 
+    '''
     def backspaceCompare(self, s: str, t: str) -> bool:
 
         i = len(s) - 1
