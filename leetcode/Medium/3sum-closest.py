@@ -4,9 +4,10 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/3sum-closest/
-// Solved on: 2026-10-27T17:47:22.572Z
+// Solved on: 2026-10-27T17:48:51.935Z
 
 class Solution:
+    '''Keep track of of the absolut diffrence and the sum the hast the least difference is the answer'''
     def threeSumClosest(self, nums: list[int], target: int) -> int:
         nums.sort()
 
