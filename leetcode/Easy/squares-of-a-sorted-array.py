@@ -4,27 +4,33 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/squares-of-a-sorted-array/
-// Solved on: 2026-10-27T08:44:07.794Z
+// Solved on: 2026-10-27T08:45:00.206Z
 
 class Solution:
-    def sortedSquares(self, nums: List[int]) -> List[int]:
-        nums = [(num ** 2) for num in nums]
+    def sortedSquares(self, nums: list[int]) -> list[int]:
+        l = 0
+        r = len(nums) - 1
+
         res = [0] * len(nums)
+        idx = r
 
-        l, r = 0, len(nums) - 1
-        pos = r
-
-        while l <= r:
-            if nums[l] >= nums[r]:
-               res[pos] = nums[l]
-               pos -= 1
-               l += 1
-               
+        while l < r:
+            if abs(nums[l]) > abs(nums[r]):
+                res[idx] = abs(nums[l])**2
+                idx -= 1
+                l += 1
             else:
-                res[pos] = nums[r]
-                pos -= 1
+                res[idx] = abs(nums[r])**2
+                idx -= 1
                 r -= 1
-                
+        
+        # last value
+        res[0] =  abs(nums[l])**2
+
         return res
+
+
+
+
 
         
