@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/palindrome-linked-list/
-// Solved on: 2026-10-30T05:41:53.206Z
+// Solved on: 2026-10-30T05:49:48.368Z
 
 # Definition for singly-linked list.
 # class ListNode:
@@ -12,41 +12,25 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        slow = head
-        fast = head
+    def isPalindrome(self, head: ListNode | None) -> bool:
+        arr = []
 
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-        
-        half_start = slow
- 
-        
-        second_head = self.reverselist(half_start)
-        first_head = head
-        
-
-        while first_head and second_head:
-            if first_head.val != second_head.val:
-                return False
-            first_head = first_head.next
-            second_head = second_head.next
-        
-        return True
-        
-
-                
-    
-    def reverselist(self, head):
-        prev = None
         curr = head
 
-        while curr != None:
-            next_temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = next_temp
+        while curr:
+            arr.append(curr.val)
+            curr = curr.next
         
-        return prev
+        l = 0
+        r = len(arr) - 1
+
+        while l < r:
+            if arr[l] == arr[r]:
+                l += 1
+                r -= 1
+            else:
+                return False
+        
+        return True
+
         
