@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/invert-binary-tree/
-// Solved on: 2026-11-05T12:36:04.213Z
+// Solved on: 2026-11-06T07:48:52.237Z
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -16,8 +16,8 @@ class Solution:
     def invertTree(self, root: TreeNode | None) -> TreeNode | None:
 
         if not root:
-            return None
-        
+            return root
+
         queue = collections.deque([root])
 
         while queue:
@@ -33,8 +33,4 @@ class Solution:
                 queue.append(node.right)
         
         return root
-            
-
-            
-
         
