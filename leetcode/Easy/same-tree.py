@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/same-tree/
-// Solved on: 2026-11-05T12:15:46.130Z
+// Solved on: 2026-11-06T07:26:16.790Z
 
 # Definition for a binary tree node.
 # class TreeNode:
