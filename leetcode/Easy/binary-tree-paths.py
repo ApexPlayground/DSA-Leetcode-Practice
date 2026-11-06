@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/binary-tree-paths/
-// Solved on: 2026-11-06T08:35:48.674Z
+// Solved on: 2026-11-06T08:41:07.526Z
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -13,27 +13,27 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
+    def binaryTreePaths(self, root: TreeNode | None) -> list[str]:
+        path_str = ""
         res = []
-        def backtrack(node, valid):
+
+        def dfs(node, path_str):
             if not node:
                 return
-            # add node value to valid list
-            valid.append(str(node.val))
-
-            # if no child we have gotten to end of the path
-            if not node.left and not node.right:
-                res.append("->".join(valid))
-            else: # if there are children
-                backtrack(node.left, valid)
-                backtrack(node.right, valid)
             
-            valid.pop()
-        backtrack(root, [])
+            path_str += str(node.val)
+
+            if not node.left and not node.right:
+                res.append("".join(path_str))
+                return
+
+
+            dfs(node.left, path_str + "->")
+            dfs(node.right, path_str + "->")
+        
+        dfs(root, path_str)
         return res
 
-
-
-
+            
 
         
