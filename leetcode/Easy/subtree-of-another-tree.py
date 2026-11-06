@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/subtree-of-another-tree/
-// Solved on: 2026-11-06T08:15:48.901Z
+// Solved on: 2026-11-06T08:23:07.508Z
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -13,42 +13,40 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
+    def isSubtree(self, root: TreeNode | None, subRoot: TreeNode | None) -> bool:
 
-        if not root and not subRoot:
-            return True
-        
-        if not root or not subRoot:
-            return False
-        
-        if self.same_tree(root, subRoot):
-            return True
-        
-    
-        left = self.isSubtree(root.left, subRoot)
-        right = self.isSubtree(root.right, subRoot)
+        def dfs(node, subNode):
 
-        return left or right
-        
-
-    def same_tree(self, t1, t2):
-
-        if not t1 and not t2:
-            return True
-
-        if not t1 or not t2:
-            return False
-        
-        if t1 and t2:
-            if t1.val == t2.val:
-                left = self.same_tree(t1.left, t2.left)
-                right = self.same_tree(t1.right, t2.right)
-                return left and right
-            else:
+            if not node and not subNode:
+                return True
+            
+            if not node or not subNode:
                 return False
 
+            if node.val == subNode.val and isSame(node, subNode):
+                return True
 
+            left = dfs(node.left, subNode)
+            right = dfs(node.right, subNode)
 
+            return left or right
         
+        def isSame(nodeOne, nodeTwo):
+
+            if not nodeOne and not nodeTwo:
+                return True
+            
+            if not nodeOne or not nodeTwo:
+                return False
+            
+            if nodeOne.val != nodeTwo.val:
+                return False
+            
+            left = isSame(nodeOne.left, nodeTwo.left)
+            right = isSame(nodeOne.right, nodeTwo.right)
+
+            return left and right
+        
+        return dfs(root, subRoot)
 
         
