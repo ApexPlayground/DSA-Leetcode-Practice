@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/merge-two-binary-trees/
-// Solved on: 2026-11-07T11:33:07.612Z
+// Solved on: 2026-11-08T13:22:48.414Z
 
 # Definition for a binary tree node.
 # class TreeNode:
