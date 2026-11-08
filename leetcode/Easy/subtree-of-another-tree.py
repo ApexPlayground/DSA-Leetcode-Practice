@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/subtree-of-another-tree/
-// Solved on: 2026-11-06T08:23:07.508Z
+// Solved on: 2026-11-08T12:42:59.786Z
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -15,38 +15,36 @@
 class Solution:
     def isSubtree(self, root: TreeNode | None, subRoot: TreeNode | None) -> bool:
 
-        def dfs(node, subNode):
+        def isSame(node1, node2):
 
-            if not node and not subNode:
+            if not node1 and not node2:
                 return True
             
-            if not node or not subNode:
-                return False
-
-            if node.val == subNode.val and isSame(node, subNode):
-                return True
-
-            left = dfs(node.left, subNode)
-            right = dfs(node.right, subNode)
-
-            return left or right
-        
-        def isSame(nodeOne, nodeTwo):
-
-            if not nodeOne and not nodeTwo:
-                return True
-            
-            if not nodeOne or not nodeTwo:
+            if not node1 or not node2:
                 return False
             
-            if nodeOne.val != nodeTwo.val:
+            if node1.val != node2.val:
                 return False
             
-            left = isSame(nodeOne.left, nodeTwo.left)
-            right = isSame(nodeOne.right, nodeTwo.right)
+            left = isSame(node1.left, node2.left)
+            right = isSame(node1.right, node2.right)
 
             return left and right
         
-        return dfs(root, subRoot)
+        if not root and not subRoot:
+            return True
+        
+        if not root or not subRoot:
+            return False
+        
+        if root.val == subRoot.val and isSame(root, subRoot):
+            return True
+        
+        left = self.isSubtree(root.left, subRoot)
+        right = self.isSubtree(root.right, subRoot)
+
+        return left or right
+            
+
 
         
