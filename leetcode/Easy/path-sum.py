@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/path-sum/
-// Solved on: 2026-11-06T07:53:12.927Z
+// Solved on: 2026-11-08T12:24:46.044Z
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -14,16 +14,18 @@
 #         self.right = right
 class Solution:
     def hasPathSum(self, root: TreeNode | None, targetSum: int) -> bool:
-
+        if not root:
+            return False
+        
         def dfs(node, target):
 
             if not node:
                 return False
-            
-            target -= node.val
 
+            target -= node.val
+            
             if not node.left and not node.right:
-                return target == 0
+                return (target == 0)
             
             left = dfs(node.left, target)
             right = dfs(node.right, target)
@@ -31,6 +33,4 @@ class Solution:
             return left or right
         
         return dfs(root, targetSum)
-
-
         
