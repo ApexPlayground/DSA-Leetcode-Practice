@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/minimum-depth-of-binary-tree/
-// Solved on: 2026-11-05T12:02:08.335Z
+// Solved on: 2026-11-08T11:41:24.822Z
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -12,37 +12,29 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-from collections import deque
 class Solution:
     def minDepth(self, root: TreeNode | None) -> int:
 
-        if root is None:
+        if not root:
             return 0
-        
-        queue = deque([(root, 1)])
-        
-      
 
-        ans = 0
+        queue = collections.deque([(root, 1)])
 
         while queue:
-
             node, depth = queue.popleft()
-
-            if not node.left and not node.right:
-                return depth
 
             if node.left:
                 queue.append((node.left, depth + 1))
-
             
             if node.right:
                 queue.append((node.right, depth + 1))
             
+            if not node.left and not node.right:
+                return depth
+        
+        
 
 
-
-
-
+        
 
         
