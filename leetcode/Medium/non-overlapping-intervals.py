@@ -4,10 +4,14 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/non-overlapping-intervals/
-// Solved on: 2026-11-09T19:26:04.201Z
+// Solved on: 2026-11-09T19:29:48.134Z
 
 class Solution:
     def eraseOverlapIntervals(self, intervals: list[list[int]]) -> int:
+        """ Ok for this, i detect  overlapping intervals normally, but when updating the previus 
+        interval, i check if the prev i slonger than the curr, if it is, it is potentially going
+        to extend in the future and overlap with more intervals, so i get rid of if now
+        """
         intervals.sort()
 
         print(intervals)
@@ -20,7 +24,6 @@ class Solution:
 
             if start < prev[1]:
                 count += 1
-
 
                 if end < prev[1]:
                     prev = [start, end]
