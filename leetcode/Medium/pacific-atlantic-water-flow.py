@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/pacific-atlantic-water-flow/
-// Solved on: 2026-11-11T17:01:02.104Z
+// Solved on: 2026-11-11T17:04:43.989Z
 
 class Solution:
     def pacificAtlantic(self, heights: list[list[int]]) -> list[list[int]]:
@@ -46,10 +46,10 @@ class Solution:
             
             return seen
         
-        a_ocean = bfs(atlantic_queue, atlantic)
-        p_ocean = bfs(pacific_queue, pacific )
+        bfs(atlantic_queue, atlantic)
+        bfs(pacific_queue, pacific )
 
-        return list(a_ocean & p_ocean)
+        return list(atlantic & pacific)
 
 
 
