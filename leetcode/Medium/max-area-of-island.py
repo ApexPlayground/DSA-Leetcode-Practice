@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/max-area-of-island/
-// Solved on: 2026-11-11T20:24:44.884Z
+// Solved on: 2026-11-11T20:25:04.623Z
 
 class Solution:
     def maxAreaOfIsland(self, grid: list[list[int]]) -> int:
@@ -34,7 +34,7 @@ class Solution:
 
                 dfs(nr, nc)
             
-            return area
+            
         
             
 
