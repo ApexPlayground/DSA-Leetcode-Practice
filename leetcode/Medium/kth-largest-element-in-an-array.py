@@ -4,21 +4,19 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/kth-largest-element-in-an-array/
-// Solved on: 2026-11-15T10:50:39.360Z
+// Solved on: 2026-11-15T11:00:19.428Z
 
 class Solution:
     def findKthLargest(self, nums: list[int], k: int) -> int:
 
-        max_heap = [-x for x in nums]
+        heap = []
 
-        heapq.heapify(max_heap)
+        for num in nums:
+            heapq.heappush(heap, num)
 
-        for _ in range(k - 1):
-            heapq.heappop(max_heap)
-        
-        ans = -heapq.heappop(max_heap)
-
-        return ans
+            if len(heap) > k:
+                heapq.heappop(heap)
+        return heap[0]
 
 
         
