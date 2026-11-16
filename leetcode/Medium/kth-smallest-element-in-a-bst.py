@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/kth-smallest-element-in-a-bst/
-// Solved on: 2026-11-16T15:48:47.007Z
+// Solved on: 2026-11-16T16:04:17.622Z
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -15,21 +15,23 @@
 class Solution:
     def kthSmallest(self, root: TreeNode | None, k: int) -> int:
 
-        heap = []
-
+        ans = 0
+        kth = k
         def dfs(node):
-            if not node:
-                return 
-            
-            heappush(heap, -node.val)
+            nonlocal ans, kth
 
-            if len(heap) > k:
-                heapq.heappop(heap)
+            if not node:
+                return
             
             dfs(node.left)
+
+            kth -= 1
+            if kth == 0:
+                ans = node.val
+                return 
+
             dfs(node.right)
-        
+
         dfs(root)
-        
-        return -heap[0]
+        return ans            
         
