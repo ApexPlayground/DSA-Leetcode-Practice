@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/word-search/
-// Solved on: 2026-11-16T19:19:49.767Z
+// Solved on: 2026-11-16T20:03:04.801Z
 
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
