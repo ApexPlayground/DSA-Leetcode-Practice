@@ -4,35 +4,42 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/word-search/
-// Solved on: 2026-11-16T20:03:04.801Z
+// Solved on: 2026-11-16T20:23:31.276Z
 
 class Solution:
-    def exist(self, board: List[List[str]], word: str) -> bool:
+    def exist(self, board: list[list[str]], word: str) -> bool:
+
         row = len(board)
         col = len(board[0])
 
         seen = set()
-        def dfs(br, bc, i):
+
+        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+
+        def dfs(r, c, i):
             if i == len(word):
                 return True
-            
-            # if within bound
-            if br < 0 or br >= row or bc < 0 or bc >= col or (br, bc) in seen or word[i] != board[br][bc]:
+
+            if r < 0 or r >= row or c < 0 or c >= col or (r,c) in seen or board[r][c] != word[i]:
                 return False
             
-            seen.add((br, bc))
-            res = (dfs(br + 1, bc, i + 1) or dfs(br - 1, bc, i + 1) or dfs(br, bc + 1, i + 1) or dfs(br, bc - 1, i + 1))
+            seen.add((r, c))
 
-            # Remove the current cell from the visited set (backtracking)
-            seen.remove((br, bc))
+            for dr, dc in directions:
+                nr = dr + r
+                nc = dc + c
 
-            return res
+                if dfs(nr, nc, i + 1):
+                    return True
 
-        for i in range(row):
-            for j in range(col):
-                if dfs(i, j, 0):
+            seen.remove((r, c))
+
+            return False
+        
+        for r in range(row):
+            for c in range(col):
+                if dfs(r, c, 0):
                     return True
         
         return False
-        
         
