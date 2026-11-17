@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/permutation-in-string/
-// Solved on: 2026-10-28T19:03:00.482Z
+// Solved on: 2026-11-17T10:39:29.949Z
 
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
