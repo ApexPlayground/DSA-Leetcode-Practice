@@ -4,34 +4,34 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/permutations/
-// Solved on: 2026-11-17T10:20:05.233Z
+// Solved on: 2026-11-17T10:22:37.351Z
 
 class Solution:
-    def permute(self, nums: List[int]) -> List[List[int]]:
-        n = len(nums)
-        res = []
-        seen = set()
-        def helper(path):
+    def permute(self, nums: list[int]) -> list[list[int]]:
 
+        res = []
+        path = []
+
+        n = len(nums)
+
+        def backtrack():
             if len(path) == n:
                 res.append(path[:])
                 return
             
             for i in range(n):
-                if nums[i] in seen:
+                if nums[i] in path:
                     continue
-                
-                seen.add(nums[i])
+
                 path.append(nums[i])
 
-                helper(path)
+                backtrack()
 
-                val = path.pop()
-                seen.remove(val)
-
-            
-
-
-        helper([])
+                path.pop()
+            return
+        backtrack()
         return res
+
+
+        
         
