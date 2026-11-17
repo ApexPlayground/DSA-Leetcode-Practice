@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/insert-interval/
-// Solved on: 2026-11-08T17:43:18.721Z
+// Solved on: 2026-11-17T19:57:35.680Z
 
 class Solution:
     def insert(self, intervals: list[list[int]], newInterval: list[int]) -> list[list[int]]:
