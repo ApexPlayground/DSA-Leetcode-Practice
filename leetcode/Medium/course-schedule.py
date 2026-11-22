@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/course-schedule/
-// Solved on: 2026-11-16T19:37:48.756Z
+// Solved on: 2026-11-22T13:11:51.067Z
 
 from collections import deque
 class Solution:
