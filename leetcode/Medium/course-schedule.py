@@ -4,43 +4,41 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/course-schedule/
-// Solved on: 2026-11-22T13:11:51.067Z
+// Solved on: 2026-11-22T13:24:26.696Z
 
-from collections import deque
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: list[list[int]]) -> bool:
-
         n = numCourses
-        adj = [[] for _ in range(n)]
+
+        adj = defaultdict(list)
         indegree = [0] * n
 
         for u, v in prerequisites:
             adj[v].append(u)
             indegree[u] += 1
         
-        print(adj)
+        queue = collections.deque()
+
+        for course, req in enumerate(indegree):
+            if req == 0:
+                queue.append(course)
         
-        queue = deque(i for i in range(n) if indegree[i] == 0)
         print(queue)
-
-        order = []
-
+        
+        order = 0
         while queue:
-            curr = queue.popleft()
-            order.append(curr)
+            curr_course = queue.popleft()
+            order += 1
 
-            for neig in adj[curr]:
+            for neig in adj[curr_course]:
                 indegree[neig] -= 1
 
                 if indegree[neig] == 0:
                     queue.append(neig)
         
-        print(order)
-        if len(order) != n:
-            return False
-        
-        return True
+        return order == n
 
 
-        
+
+
         
