@@ -4,29 +4,25 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/top-k-frequent-elements/
-// Solved on: 2026-11-15T11:10:21.221Z
+// Solved on: 2026-11-23T10:18:13.632Z
 
+import heapq
 class Solution:
     def topKFrequent(self, nums: list[int], k: int) -> list[int]:
-        freq = Counter(nums)
+
         heap = []
 
-        for key, val in freq.items():
-            heap.append((val, key))
-        
-        heapq.heapify(heap)
+        freq_arr = [(val, key) for key, val in Counter(nums).items()]
 
-        while len(heap) > k:
-            heapq.heappop(heap)
-        
-        print(heap)
-        
-        ans = [num for count, num in heap]
+        for item in freq_arr:
+            heapq.heappush(heap, item)
 
-        print(ans)
-
-        return ans
+            if len(heap) > k:
+                heapq.heappop(heap)
         
+        res = [num for _, num in heap]
+
+        return res
 
 
         
