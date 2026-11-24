@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/validate-binary-search-tree/
-// Solved on: 2026-11-08T15:57:00.668Z
+// Solved on: 2026-11-24T09:52:29.322Z
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -15,21 +15,22 @@
 class Solution:
     def isValidBST(self, root: TreeNode | None) -> bool:
 
-        queue = collections.deque([(root, float('-inf'), float('inf'))])
+        def dfs(node, _min, _max):
 
-        while queue:
-            node, lower, upper = queue.popleft()
+            if not node:
+                return True
 
-            if not (lower < node.val < upper):
+            if not (_min < node.val < _max):
                 return False
             
-            if node.left:
-                queue.append((node.left, lower, node.val))
-            
-            if node.right:
-                queue.append((node.right, node.val, upper))
+            left = dfs( node.left, _min, node.val)
+            right = dfs( node.right, node.val, _max)
+
+            return left and right
         
-        return True
+        return dfs(root, float('-inf'), float('inf'))
 
 
-        
+
+
+
