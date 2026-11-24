@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
-// Solved on: 2026-11-16T16:56:19.833Z
+// Solved on: 2026-11-24T10:06:54.635Z
 
 # Definition for a binary tree node.
 # class TreeNode:
