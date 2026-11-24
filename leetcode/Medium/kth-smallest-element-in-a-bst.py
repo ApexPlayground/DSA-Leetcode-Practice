@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/kth-smallest-element-in-a-bst/
-// Solved on: 2026-11-16T16:04:17.622Z
+// Solved on: 2026-11-24T10:14:04.356Z
 
 # Definition for a binary tree node.
 # class TreeNode:
