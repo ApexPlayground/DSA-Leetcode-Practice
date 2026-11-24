@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/binary-tree-level-order-traversal/
-// Solved on: 2026-11-08T15:32:03.030Z
+// Solved on: 2026-11-24T09:38:21.332Z
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -12,23 +12,19 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-
-from collections import deque
 class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-
-        if not root:
-            return []
+    def levelOrder(self, root: TreeNode | None) -> list[list[int]]:
 
         queue = collections.deque([root])
         res = []
 
+        if not root:
+            return []
+
         while queue:
-            lvl_size = len(queue)
+            lvl = len(queue)
             curr = []
-
-            for i in range(lvl_size):
-
+            for _ in range(lvl):
                 node = queue.popleft()
 
                 curr.append(node.val)
@@ -38,13 +34,10 @@ class Solution:
                 
                 if node.right:
                     queue.append(node.right)
-
+            
             res.append(curr)
         
         return res
-
             
-
-
 
         
