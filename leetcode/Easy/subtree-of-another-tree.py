@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/subtree-of-another-tree/
-// Solved on: 2026-11-25T18:01:20.911Z
+// Solved on: 2026-11-25T18:02:53.809Z
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -35,7 +35,7 @@ class Solution:
             if not node:
                 return False
             
-            if node.val == subRoot.val and self.isSame(node, subRoot):
+            if self.isSame(node, subRoot):
                 return True
             
             left = dfs(node.left)
