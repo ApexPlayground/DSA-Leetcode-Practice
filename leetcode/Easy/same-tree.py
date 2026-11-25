@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/same-tree/
-// Solved on: 2026-11-08T12:01:07.559Z
+// Solved on: 2026-11-25T17:45:15.706Z
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -15,25 +15,21 @@
 class Solution:
     def isSameTree(self, p: TreeNode | None, q: TreeNode | None) -> bool:
 
-       
+        def dfs(node1, node2):
 
-        def dfs(pNode, qNode):
-
-            if not pNode and not qNode:
+            if not node1 and not node2:
                 return True
-
-            if not pNode or not qNode:
+            
+            if not node1 or not node2:
                 return False
 
-            if pNode.val != qNode.val:
+            if node1.val != node2.val:
                 return False
             
-            
-            left = dfs(pNode.left, qNode.left)
-            right = dfs(pNode.right, qNode.right)
+            left = dfs(node1.left, node2.left)
+            right = dfs(node1.right, node2.right)
 
             return left and right
-
-        return dfs(p, q)            
-
+        
+        return dfs(p, q)
         
