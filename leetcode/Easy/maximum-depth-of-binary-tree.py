@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/maximum-depth-of-binary-tree/
-// Solved on: 2026-11-05T09:31:13.639Z
+// Solved on: 2026-11-25T17:03:39.180Z
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -15,31 +15,15 @@
 class Solution:
     def maxDepth(self, root: TreeNode | None) -> int:
 
-
-        if root is None:
-            return 0
-
-        stack = [(root, 1)]
-
-        best = 0
-
-        while stack:
-
-
-            node, depth = stack.pop()
-
-            best = max(best, depth)
-
-            if node.left:
-                stack.append((node.left, depth + 1))
+        def dfs(node):
+            if not node:
+                return 0
             
-            if node.right:
-                stack.append((node.right, depth + 1))
-            
-          
+            left = dfs(node.left)
+            right = dfs(node.right)
+
+            return 1 + max(left, right)
         
-        return best
-
-
+        return dfs(root)
 
         
