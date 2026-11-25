@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
-// Solved on: 2026-11-24T10:12:26.734Z
+// Solved on: 2026-11-25T18:35:28.110Z
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -20,11 +20,10 @@ class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
 
         def dfs(node):
-
             if not node:
                 return None
             
-            if node == p or node == q:
+            if node == p or node== q:
                 return node
             
             left = dfs(node.left)
