@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/delete-node-in-a-bst/
-// Solved on: 2026-11-26T10:31:06.791Z
+// Solved on: 2026-11-26T10:50:57.907Z
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -13,33 +13,49 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
-        def helper(node, val):
+    def deleteNode(self, root: TreeNode | None, key: int) -> TreeNode | None:
+
+        def dfs(node):
             if not node:
                 return None
-            
-            if node:
-                if val < node.val:
-                    node.left = helper(node.left, val)
-                elif val > node.val:
-                    node.right = helper(node.right, val)
-                else:
-                      # Node to be deleted found
-                    if not node.left:
-                        return node.right
-                    elif not node.right:
-                        return node.left
-                    else:
-                         # Find successor (smallest in right subtree)
-                        replacement = node.right
-                        while replacement.left:
-                            replacement = replacement.left
-                         # Copy successor's value to current node
-                        node.val = replacement.val
 
-                        #delete the successor
-                        node.right = helper(node.right, replacement.val)
+            if key < node.val:
+                node.left = dfs(node.left)
+            
+            elif key > node.val:
+                node.right = dfs(node.right)
+            
+            else:
+
+                # has no left child, relace with right
+                if not node.left:
+                    return node.right
+                
+                # has no right child
+                if not node.right:
+                    return node.left
+                
+                # has 2 kids
+                curr = node.right
+
+                # Find the leftmost node in the replacement subtree
+                while curr.left:
+                    curr = curr.left
+                
+                # Attach the original left subtree to preserve it
+                curr.left = node.left
+
+                return node.right
+                
             return node
-        return helper(root, key)
+        
+        return dfs(root)
+
+
+        
+        return dfs(root)
+
+
+
 
         
