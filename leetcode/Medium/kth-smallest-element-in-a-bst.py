@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/kth-smallest-element-in-a-bst/
-// Solved on: 2026-11-24T10:27:48.677Z
+// Solved on: 2026-11-26T12:09:56.731Z
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -22,11 +22,10 @@ class Solution:
 
             if not node:
                 return 
-            
+
             dfs(node.left)
 
             k -= 1
-
             if k == 0:
                 ans = node.val
             
@@ -34,8 +33,4 @@ class Solution:
         
         dfs(root)
         return ans
-
-            
-
-
         
