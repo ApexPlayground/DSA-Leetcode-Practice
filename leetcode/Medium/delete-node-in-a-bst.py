@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/delete-node-in-a-bst/
-// Solved on: 2026-11-25T20:24:35.343Z
+// Solved on: 2026-11-26T10:31:06.791Z
 
 # Definition for a binary tree node.
 # class TreeNode:
