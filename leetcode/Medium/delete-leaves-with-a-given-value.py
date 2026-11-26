@@ -4,7 +4,7 @@
 // Language: python3
 // Verdict: Accepted
 // URL: https://leetcode.com/problems/delete-leaves-with-a-given-value/
-// Solved on: 2026-11-26T12:30:46.580Z
+// Solved on: 2026-11-26T12:31:04.593Z
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -20,9 +20,6 @@ class Solution:
             if not node:
                 return None
 
-            if not node.left and not node.right:
-                if node.val == target:
-                    return None
             
             node.left = dfs(node.left)
             node.right = dfs(node.right)
